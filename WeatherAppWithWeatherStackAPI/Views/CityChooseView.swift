@@ -6,16 +6,17 @@
 //
 
 import SwiftUI
+import Alamofire
 
 struct CityChooseView: View {
-    
+    let weather = NetworkManager.shared
     
     var body: some View {
         VStack {
             Image("mainPic")
                 .resizable()
                 .frame(width: 250, height: 250)
-            Button(action: {}) {
+            Button(action: buttonAction) {
                 Text("Choose city")
                     .frame(width: 150, height: 60)
                     .foregroundColor(.white)
@@ -32,12 +33,16 @@ struct CityChooseView: View {
     }
     
     func buttonAction() {
-        
+        weather.fetchWeather(from: "http://api.weatherstack.com/current?access_key=c414a7f553e3b40344a3d8ff36490ac5&query=Bishkek") { result in
+            print(result)
+        }
     }
-}
+    
 
-struct CityChooseView_Previews: PreviewProvider {
-    static var previews: some View {
-        CityChooseView()
+
+    struct CityChooseView_Previews: PreviewProvider {
+        static var previews: some View {
+            CityChooseView()
+        }
     }
 }

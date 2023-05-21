@@ -17,7 +17,8 @@ struct CitiesListView: View {
 
         NavigationStack {
             List(countries) { country in
-                NavigationLink(destination: CityWeatherView(country: country)) {        Text(country.name)
+                NavigationLink(destination: CityWeatherView(country: country)) {
+                    Text(country.name)
                 }
             }
             .navigationTitle("Countries")
